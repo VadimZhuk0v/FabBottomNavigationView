@@ -21,8 +21,8 @@
         app:fab_cradle_margin="8dp"
         app:fab_cradle_rounded_corner_radius="8dp"
         app:fab_size="50dp"
-        app:itemIconTint="@color/colorAccent"
-        app:menu="@menu/manu_bottom_navigation" />
+        app:itemIconTint="@android:color/white"
+        app:menu="@menu/menu_bottom_navigation" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

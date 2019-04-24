@@ -15,6 +15,7 @@ import com.google.android.material.shape.ShapePathModel
 class FabBottomNavigationView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : BottomNavigationView(context, attrs, defStyleAttr) {
+
     private var topCurvedEdgeTreatment: TopCurvedEdgeTreatment
     private var materialShapeDrawable: MaterialShapeDrawable
     private var fabSize = 0F
