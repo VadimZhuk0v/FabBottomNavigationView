@@ -44,7 +44,6 @@ class FabBottomNavigationView @JvmOverloads constructor(
             shadowElevation = 4
             shadowRadius = 16
             isShadowEnabled = true
-            strokeWidth = 4F
             paintStyle = Paint.Style.FILL_AND_STROKE
         }
 
