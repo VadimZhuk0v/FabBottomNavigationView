@@ -27,7 +27,7 @@ class FabBottomNavigationView @JvmOverloads constructor(
         val ta = context.theme.obtainStyledAttributes(attrs, R.styleable.FabBottomNavigationView, 0, 0)
         fabSize = ta.getDimension(R.styleable.FabBottomNavigationView_fab_size, 0F)
         fabCradleMargin = ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_margin, 0F)
-        fabCradleRoundedCornerRadius = ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_margin, 0F)
+        fabCradleRoundedCornerRadius = ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_rounded_corner_radius, 0F)
         cradleVerticalOffset = ta.getDimension(R.styleable.FabBottomNavigationView_cradle_vertical_offset, 0F)
 
         topCurvedEdgeTreatment =
