@@ -1,22 +1,26 @@
 package com.vadmax.fabbottomnavigationview
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
 import androidx.core.animation.doOnEnd
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.google.android.material.bottomappbar.BottomAppBarTopEdgeTreatment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.ShapePathModel
 
+@SuppressLint("RestrictedApi")
 class FabBottomNavigationView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : BottomNavigationView(context, attrs, defStyleAttr) {
 
-    private var topCurvedEdgeTreatment: TopCurvedEdgeTreatment
+    private var topCurvedEdgeTreatment: BottomAppBarTopEdgeTreatment
     private var materialShapeDrawable: MaterialShapeDrawable
     private var fabSize = 0F
     var fabCradleMargin = 0F
@@ -30,20 +34,16 @@ class FabBottomNavigationView @JvmOverloads constructor(
         fabCradleRoundedCornerRadius = ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_rounded_corner_radius, 0F)
         cradleVerticalOffset = ta.getDimension(R.styleable.FabBottomNavigationView_cradle_vertical_offset, 0F)
 
-        topCurvedEdgeTreatment =
-            TopCurvedEdgeTreatment(fabCradleMargin, fabCradleRoundedCornerRadius, cradleVerticalOffset).apply {
-                fabDiameter = fabSize
-            }
-
-        val shapePathModel = ShapePathModel().apply {
-            topEdge = topCurvedEdgeTreatment
+        topCurvedEdgeTreatment = BottomAppBarTopEdgeTreatment(fabCradleMargin,fabCradleRoundedCornerRadius, cradleVerticalOffset).apply {
+            fabDiameter = fabSize
         }
+
+        val shapePathModel = ShapeAppearanceModel.Builder()
+            .setTopEdge(topCurvedEdgeTreatment)
+            .build()
 
         materialShapeDrawable = MaterialShapeDrawable(shapePathModel).apply {
             setTint(ContextCompat.getColor(context, R.color.bottom_bar))
-            shadowElevation = 4
-            shadowRadius = 16
-            isShadowEnabled = true
             paintStyle = Paint.Style.FILL_AND_STROKE
         }
 
