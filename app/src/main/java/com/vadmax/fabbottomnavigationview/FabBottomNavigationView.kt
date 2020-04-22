@@ -13,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
-import com.google.android.material.shape.ShapePathModel
 
 @SuppressLint("RestrictedApi")
 class FabBottomNavigationView @JvmOverloads constructor(
@@ -31,18 +30,19 @@ class FabBottomNavigationView @JvmOverloads constructor(
         val ta = context.theme.obtainStyledAttributes(attrs, R.styleable.FabBottomNavigationView, 0, 0)
         fabSize = ta.getDimension(R.styleable.FabBottomNavigationView_fab_size, 0F)
         fabCradleMargin = ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_margin, 0F)
-        fabCradleRoundedCornerRadius = ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_rounded_corner_radius, 0F)
+        fabCradleRoundedCornerRadius =
+            ta.getDimension(R.styleable.FabBottomNavigationView_fab_cradle_rounded_corner_radius, 0F)
         cradleVerticalOffset = ta.getDimension(R.styleable.FabBottomNavigationView_cradle_vertical_offset, 0F)
 
-        topCurvedEdgeTreatment = BottomAppBarTopEdgeTreatment(fabCradleMargin,fabCradleRoundedCornerRadius, cradleVerticalOffset).apply {
-            fabDiameter = fabSize
+        topCurvedEdgeTreatment = BottomAppBarTopEdgeTreatment(fabCradleMargin, fabCradleRoundedCornerRadius, cradleVerticalOffset).apply {
+                fabDiameter = fabSize
         }
 
-        val shapePathModel = ShapeAppearanceModel.Builder()
+        val shapeAppearanceModel = ShapeAppearanceModel.Builder()
             .setTopEdge(topCurvedEdgeTreatment)
             .build()
 
-        materialShapeDrawable = MaterialShapeDrawable(shapePathModel).apply {
+        materialShapeDrawable = MaterialShapeDrawable(shapeAppearanceModel).apply {
             setTint(ContextCompat.getColor(context, R.color.bottom_bar))
             paintStyle = Paint.Style.FILL_AND_STROKE
         }
